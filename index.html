@@ -60,9 +60,9 @@ background-color: mediumblue;
         <input type="text" id="cityname" placeholder="Enter City Name">
         <input type="text" id="countryname" placeholder="Enter Country Name">
         <Button class="Button">Get Weather</Button>
-
+     <p id="result"  style="color: rgb(255, 255, 255); font-size: 18px;"></p>
     </form>
-     <p id="result"  style="color: black; font-size: 24px;"></p>
+
      </div>
     <script>
 function getWeather(){
@@ -74,11 +74,11 @@ function getWeather(){
         }).then(function(data){
 console.log(data);
 result.innerHTML=`Fajr: ${data.data.timings.Fajr} <br>
-Dhuhr: ${data.data.timings.Dhuhr} <br>
+Dhuhr: ${data.data.timings.Dhuhr}<br>
 Asr: ${data.data.timings.Asr} <br>
 Maghrib: ${data.data.timings.Maghrib} <br>
 Isha: ${data.data.timings.Isha} <br>
-Sunrise: ${data.data.timings.Sunrise} <br>
+Sunrise: ${data.data.timings.Sunrise}<br>
 Sunset: ${data.data.timings.Sunset} <br>
 `;
 
