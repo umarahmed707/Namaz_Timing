@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            margin-top: 50px;
+
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            background-color: lightblue;
+            height: 100vh;
+
+        }
+        .container2
+        {
+                display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+background-color: mediumblue;
+      padding: 20px 40px;
+       gap: 10px;
+       border-radius: 15px;
+        }
+
+        .container input{
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 15px;
+       
+
+        }
+        h2{
+            color: #ffffff;
+            margin-bottom: 20px;
+    font-size: xx-large;
+        }
+        .Button{
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form action="" onsubmit="getWeather(); return false" class="container2">
+        <h2>Get Prayer Timings</h2>
+       
+        <input type="text" id="cityname" placeholder="Enter City Name">
+        <input type="text" id="countryname" placeholder="Enter Country Name">
+        <Button class="Button">Get Weather</Button>
+
+    </form>
+     <p id="result"  style="color: black; font-size: 24px;"></p>
+     </div>
+    <script>
+function getWeather(){
+    let userCity=document.getElementById("cityname").value;
+    let userCountry=document.getElementById("countryname").value;
+    let result = document.getElementById("result");
+        fetch(`https://api.aladhan.com/v1/timingsByCity?city=${userCity}&country=${userCountry}&method=1`).then(function(res){
+            return res.json();
+        }).then(function(data){
+console.log(data);
+result.innerHTML=`Fajr: ${data.data.timings.Fajr} <br>
+Dhuhr: ${data.data.timings.Dhuhr} <br>
+Asr: ${data.data.timings.Asr} <br>
+Maghrib: ${data.data.timings.Maghrib} <br>
+Isha: ${data.data.timings.Isha} <br>
+Sunrise: ${data.data.timings.Sunrise} <br>
+Sunset: ${data.data.timings.Sunset} <br>
+`;
+
+        }).catch((err)=>{
+            console.log("Error"+err);
+        })
+        
+       
+    }
+        </script>
+</body>
+</html>
